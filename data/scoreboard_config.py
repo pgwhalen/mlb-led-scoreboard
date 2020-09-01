@@ -55,6 +55,7 @@ class ScoreboardConfig:
     self.time_format = json["time_format"]
     self.end_of_day = json["end_of_day"]
     self.full_team_names = json["full_team_names"]
+    self.pregame_win_probabilities = json["pregame_win_probabilities"]
     self.debug = json["debug"]
     self.demo_date = json["demo_date"]
 
