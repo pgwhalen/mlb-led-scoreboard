@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta
+
+from win_probabilities import WinProbabilities
 from final import Final
 from pregame import Pregame
 from scoreboard import Scoreboard
@@ -51,6 +53,8 @@ class Data:
     # News headlines
     self.headlines = Headlines(self.config)
 
+    # Pregame Win Probabilities
+    self.win_probabilities = WinProbabilities(self.year, self.month, self.day)
 
   #
   # Date

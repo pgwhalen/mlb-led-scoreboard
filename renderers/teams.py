@@ -1,10 +1,12 @@
 from rgbmatrix import graphics
+
+import debug
 from utils import get_font, get_file
 import json
 
 class TeamsRenderer:
   """Renders the scoreboard team banners including background color, team abbreviation text,
-  and their scored runs."""
+  and their scored runs (or win probabilities if pregame)."""
 
   def __init__(self, canvas, home_team, away_team, data):
     self.canvas = canvas
@@ -80,11 +82,18 @@ class TeamsRenderer:
           x_offset = accent_coords[team]["x"]
           y_offset = accent_coords[team]["y"]
           self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
-          
+
     self.__render_team_text(self.away_team, "away", away_colors, away_name_coords["x"], away_name_coords["y"])
     self.__render_team_text(self.home_team, "home", home_colors, home_name_coords["x"], home_name_coords["y"])
-    self.__render_team_score(self.away_team.runs, "away", away_colors, away_score_coords["x"], away_score_coords["y"])
-    self.__render_team_score(self.home_team.runs, "home", home_colors, home_score_coords["x"], home_score_coords["y"])
+
+    if self.data.config.pregame_win_probabilities and self.away_team.runs == "" and self.home_team.runs == "":
+      away_score = self.data.win_probabilities.pct_for_team(self.away_team.abbrev.upper())
+      home_score = self.data.win_probabilities.pct_for_team(self.home_team.abbrev.upper())
+    else:
+      away_score = self.away_team.runs
+      home_score = self.home_team.runs
+    self.__render_team_score(away_score, "away", away_colors, away_score_coords["x"], away_score_coords["y"])
+    self.__render_team_score(home_score, "home", home_colors, home_score_coords["x"], home_score_coords["y"])
 
   def __render_team_text(self, team, homeaway, colors, x, y):
     text_color = colors.get('text', self.default_colors['text'])
@@ -95,11 +104,11 @@ class TeamsRenderer:
       team_text = '{:13s}'.format(team.name)
     graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, team_text)
 
-  def __render_team_score(self, runs, homeaway, colors, x, y):
+  def __render_team_score(self, team_score, homeaway, colors, x, y):
     text_color = colors.get('text', self.default_colors['text'])
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     coords = self.data.config.layout.coords("teams.runs.{}".format(homeaway))
     font = self.data.config.layout.font("teams.runs.{}".format(homeaway))
-    team_runs = str(runs)
-    team_runs_x = coords["x"] - (len(team_runs) * font["size"]["width"])
-    graphics.DrawText(self.canvas, font["font"], team_runs_x, y, text_color_graphic, team_runs)
+    team_score = str(team_score)
+    team_score_x = coords["x"] - (len(team_score) * font["size"]["width"])
+    graphics.DrawText(self.canvas, font["font"], team_score_x, y, text_color_graphic, team_score)
