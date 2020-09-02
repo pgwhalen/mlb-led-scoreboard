@@ -18,7 +18,6 @@
       "y": 22,
       "size": 6
     }
-  },
   "final": {
     "inning": {
       "x": 32,
@@ -163,6 +162,28 @@
         "x": 31
       },
       "games_back": {
+        "x": 64
+      }
+    }
+  },
+  "untappd": {
+    "offset": 6,
+    "height": 30,
+    "width": 64,
+    "divider": {
+      "x": 21
+    },
+    "stat_title": {
+      "x": 28
+    },
+    "guy": {
+      "name": {
+        "x": 1
+      },
+      "uniques": {
+        "x": 31
+      },
+      "beers_back": {
         "x": 64
       }
     }
