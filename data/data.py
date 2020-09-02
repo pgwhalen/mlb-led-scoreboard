@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+from untappd_standings import UntappdStandings
 from win_probabilities import WinProbabilities
 from final import Final
 from pregame import Pregame
@@ -55,6 +56,9 @@ class Data:
 
     # Pregame Win Probabilities
     self.win_probabilities = WinProbabilities(self.year, self.month, self.day)
+
+    # Untappd Standings
+    self.untappd_standings = UntappdStandings(self.config)
 
   #
   # Date

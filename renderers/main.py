@@ -8,6 +8,7 @@ from renderers.scoreboard import Scoreboard as ScoreboardRenderer
 from renderers.status import StatusRenderer
 from renderers.standings import StandingsRenderer
 from renderers.offday import OffdayRenderer
+from renderers.untappd_standings import UntappdStandingsRenderer
 from data.data import Data
 import debug
 import time
@@ -52,6 +53,8 @@ class MainRenderer:
       else:
         self.__render_game()
 
+    elif self.data.config.untappd_always_display:
+      self.__render_untappd_standings()
     # Playball!
     else:
       self.__render_game()
@@ -209,3 +212,10 @@ class MainRenderer:
       self.scrolling_text_pos = self.canvas.width
     else:
       self.scrolling_text_pos = pos_after_scroll
+
+  def __render_untappd_standings(self):
+    while True:
+      debug.info("Rendering Untapped Standings")
+      self.data.untappd_standings.fetch()
+      UntappdStandingsRenderer(self.matrix, self.canvas, self.data).render()
+      time.sleep(300)
