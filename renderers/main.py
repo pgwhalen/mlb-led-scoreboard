@@ -2,6 +2,7 @@ from data.final import Final
 from data.pregame import Pregame
 from data.scoreboard import Scoreboard
 from data.status import Status
+from renderers.election import ElectionRenderer
 from renderers.final import Final as FinalRenderer
 from renderers.pregame import Pregame as PregameRenderer
 from renderers.scoreboard import Scoreboard as ScoreboardRenderer
@@ -55,6 +56,9 @@ class MainRenderer:
 
     elif self.data.config.untappd_always_display:
       self.__render_untappd_standings()
+
+    elif self.data.config.election_predictions_always_display:
+      self.__render_election_predictions()
     # Playball!
     else:
       self.__render_game()
@@ -219,3 +223,17 @@ class MainRenderer:
       self.data.untappd_standings.fetch()
       UntappdStandingsRenderer(self.matrix, self.canvas, self.data).render()
       time.sleep(300)
+
+  def __render_election_predictions(self):
+    self.data.election_predictions.update()
+    current_race = self.data.election_predictions.next_race()
+    current_scrolling_text = self.data.election_predictions.days_remaining_text()
+    while True:
+      self.data.election_predictions.update()
+      renderer = ElectionRenderer(self.canvas, current_race, self.data, current_scrolling_text, self.scrolling_text_pos)
+      self.__update_scrolling_text_pos(renderer.render())
+      if self.scrolling_finished:
+        current_race = self.data.election_predictions.next_race()
+        self.scrolling_finished = False
+      self.canvas = self.matrix.SwapOnVSync(self.canvas)
+      time.sleep(self.data.config.scrolling_speed)
