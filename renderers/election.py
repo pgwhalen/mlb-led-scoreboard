@@ -7,7 +7,7 @@ import json
 
 
 class ElectionRenderer:
-  __WHITE = graphics.Color(200, 200, 200)
+  __WHITE = graphics.Color(255, 255, 255)
   __YELLOW = graphics.Color(255, 235, 59)
 
   """

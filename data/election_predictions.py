@@ -108,14 +108,14 @@ class ElectionPredictions:
 
 class Candidate:
   __RED = {
-    'r': 220,
-    'g': 0,
-    'b': 0,
+    'r': 204,
+    'g': 52,
+    'b': 51,
   }
   __BLUE = {
-    'r': 0,
-    'g': 0,
-    'b': 220,
+    'r': 14,
+    'g': 15,
+    'b': 134,
   }
 
   @staticmethod
