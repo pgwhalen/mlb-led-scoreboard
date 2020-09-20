@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+from election_predictions import ElectionPredictions
 from untappd_standings import UntappdStandings
 from win_probabilities import WinProbabilities
 from final import Final
@@ -59,6 +60,9 @@ class Data:
 
     # Untappd Standings
     self.untappd_standings = UntappdStandings(self.config)
+
+    # 538 Election Predictions
+    self.election_predictions = ElectionPredictions()
 
   #
   # Date

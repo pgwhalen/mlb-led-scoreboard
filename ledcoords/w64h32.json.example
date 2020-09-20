@@ -251,6 +251,67 @@
       }
     }
   },
+  "election": {
+    "name": {
+      "x": 32,
+      "y": 20
+    },
+    "scrolling_text": {
+      "x": 0,
+      "y": 30,
+      "width": 64
+    },
+      "candidates": {
+        "background": {
+          "top": {
+            "width": 64,
+            "height": 7,
+            "x": 0,
+            "y": 0
+          },
+          "bottom": {
+            "width": 64,
+            "height": 7,
+            "x": 0,
+            "y": 7
+          }
+        },
+        "name": {
+          "top": {
+            "x": 4,
+            "y": 6
+          },
+          "bottom": {
+            "x": 4,
+            "y": 13
+          }
+        },
+        "accent": {
+          "top": {
+            "width": 2,
+            "height": 7,
+            "x": 0,
+            "y": 0
+          },
+          "bottom": {
+            "width": 2,
+            "height": 7,
+            "x": 0,
+            "y": 7
+          }
+        },
+        "percent": {
+          "top": {
+            "x": 62,
+            "y": 6
+          },
+          "bottom": {
+            "x": 62,
+            "y": 13
+          }
+        }
+      }
+  },
   "offday": {
     "scrolling_text": {
       "x": 0,

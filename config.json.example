@@ -19,10 +19,13 @@
 		"always_display": false
 	},
 	"untappd_standings": {
-		"always_display": true,
+		"always_display": false,
 		"untappd_user_to_short_name": {
 
 		}
+	},
+	"election_predictions": {
+		"always_display": false
 	},
 	"rotation": {
 		"enabled": true,
