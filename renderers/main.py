@@ -38,6 +38,9 @@ class MainRenderer:
     elif self.data.config.standings_always_display:
       self.__render_standings()
 
+    elif self.data.config.election_predictions_always_display:
+      self.__render_election_predictions()
+
     # Full MLB Offday
     elif self.data.is_offday():
       if self.data.config.standings_mlb_offday:
@@ -57,8 +60,6 @@ class MainRenderer:
     elif self.data.config.untappd_always_display:
       self.__render_untappd_standings()
 
-    elif self.data.config.election_predictions_always_display:
-      self.__render_election_predictions()
     # Playball!
     else:
       self.__render_game()
