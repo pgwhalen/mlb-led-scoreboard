@@ -59,6 +59,10 @@ class ScoreboardConfig:
     self.debug = json["debug"]
     self.demo_date = json["demo_date"]
 
+    # Untappd
+    self.untappd_always_display = json["untappd_standings"]["always_display"]
+    self.untappd_user_to_name = json["untappd_standings"]["untappd_user_to_short_name"]
+
     # Make sure the scrolling speed setting is in range so we don't crash
     try:
       self.scrolling_speed = SCROLLING_SPEEDS[json["scrolling_speed"]]

@@ -18,6 +18,12 @@
 		"mlb_offday": true,
 		"always_display": false
 	},
+	"untappd_standings": {
+		"always_display": true,
+		"untappd_user_to_short_name": {
+
+		}
+	},
 	"rotation": {
 		"enabled": true,
 		"scroll_until_finished": true,
