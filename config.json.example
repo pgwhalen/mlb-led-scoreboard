@@ -27,6 +27,10 @@
 	"election_predictions": {
 		"always_display": false
 	},
+	"fermentation_stats": {
+		"always_display": true,
+		"google_sheets_id": "afjlsdklkj"
+	},
 	"rotation": {
 		"enabled": true,
 		"scroll_until_finished": true,

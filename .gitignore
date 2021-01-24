@@ -121,3 +121,7 @@ src/
 
 # Ignore logs
 logs.txt
+
+# Ignore google sheets credentials
+credentials.json
+token.pickle

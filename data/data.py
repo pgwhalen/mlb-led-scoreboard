@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from election_predictions import ElectionPredictions
 from untappd_standings import UntappdStandings
 from win_probabilities import WinProbabilities
+from tilt_hydrometer import TiltHyrdrometer
 from final import Final
 from pregame import Pregame
 from scoreboard import Scoreboard
@@ -63,6 +64,9 @@ class Data:
 
     # 538 Election Predictions
     self.election_predictions = ElectionPredictions()
+
+    # Tilt Hydrometer fermentation status
+    self.tilt_hydrometer = TiltHyrdrometer(self.config)
 
   #
   # Date
