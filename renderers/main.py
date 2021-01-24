@@ -10,6 +10,7 @@ from renderers.status import StatusRenderer
 from renderers.standings import StandingsRenderer
 from renderers.offday import OffdayRenderer
 from renderers.untappd_standings import UntappdStandingsRenderer
+from renderers.fermentation_stats import FermentationStatsRenderer
 from data.data import Data
 import debug
 import time
@@ -40,6 +41,9 @@ class MainRenderer:
 
     elif self.data.config.election_predictions_always_display:
       self.__render_election_predictions()
+
+    elif self.data.config.fermentation_stats_always_display:
+      self.__render_fermentation_stats()
 
     # Full MLB Offday
     elif self.data.is_offday():
@@ -223,6 +227,13 @@ class MainRenderer:
       debug.info("Rendering Untapped Standings")
       self.data.untappd_standings.fetch()
       UntappdStandingsRenderer(self.matrix, self.canvas, self.data).render()
+      time.sleep(300)
+
+  def __render_fermentation_stats(self):
+    while True:
+      debug.info("Rendering Fermentation Stats")
+      self.data.tilt_hydrometer.fetch()
+      FermentationStatsRenderer(self.matrix, self.canvas, self.data).render()
       time.sleep(300)
 
   def __render_election_predictions(self):

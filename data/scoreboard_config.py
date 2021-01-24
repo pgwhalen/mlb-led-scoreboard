@@ -66,6 +66,10 @@ class ScoreboardConfig:
     # Election predictions
     self.election_predictions_always_display = json["election_predictions"]["always_display"]
 
+    # Fermentation stats
+    self.fermentation_stats_always_display = json["fermentation_stats"]["always_display"]
+    self.fermentation_stats_google_sheets_id = json["fermentation_stats"]["google_sheets_id"]
+
     # Make sure the scrolling speed setting is in range so we don't crash
     try:
       self.scrolling_speed = SCROLLING_SPEEDS[json["scrolling_speed"]]
